@@ -19,6 +19,9 @@ export PREFIX
 UNAME := $(shell uname)
 export UNAME
 
+lib:
+	@LDFLAGS="$(LDFLAGS)" CPPFLAGS="$(CPPFLAGS)" $(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS)
+
 all: 
 	@LDFLAGS="$(LDFLAGS)" CPPFLAGS="$(CPPFLAGS)" $(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS)
 	@LDFLAGS="$(LDFLAGS)" CPPFLAGS="$(CPPFLAGS)" $(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ -$(MAKEFLAGS)
