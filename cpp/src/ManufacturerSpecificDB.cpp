@@ -341,10 +341,10 @@ namespace OpenZWave
 							Log::Write(LogLevel_Debug, "Config file for %s already queued", c->GetProductName().c_str());
 						}
 					}
-					else 
-					{
-						checkConfigFileContents(driver, path);	
-					}
+//					else 
+//					{
+//						checkConfigFileContents(driver, path);	
+//					}
 				}
 			}
 			checkInitialized();
