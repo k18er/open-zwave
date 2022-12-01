@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Product xmlns="https://github.com/OpenZWave/open-zwave" Revision="2">
+	<MetaData>
+		<!--
+		Neo (Coolcam) NAS-PD03Z Motion Sensor (PIR) Version 3.03
+		No official manual available
+		Does not figure on https://products.z-wavealliance.org
+		-->
+		<MetaDataItem name="Name">
+			Neo (Coolcam) NAS-PD03Z Motion Sensor (PIR) Version 3.03
+		</MetaDataItem>
+		<MetaDataItem name="ProductPage">
+			https://www.szneo.com/en/products/show.php?id=197
+		</MetaDataItem>
+		<MetaDataItem name="ProductPic">
+			images/shenzen_neo/nas-pd02z.png
+		</MetaDataItem>
+		<MetaDataItem name="WakeupDescription">
+			Press button in sensor once. If successfull, LED will blink one time.
+		</MetaDataItem>
+		<MetaDataItem name="InclusionDescription">
+			Set gateway in inclusion mode. Press button in sensor three times. LED will flash red five times and then on and off alternately.
+		</MetaDataItem>
+		<MetaDataItem name="ExclusionDescription">
+			Set gateway in exclusion mode. Press button in sensor three times. LED will flash red five times and then on and off alternately.
+		</MetaDataItem>
+		<MetaDataItem name="ResetDescription">
+			Press and hold button the button in sensor for 10-15 seconds. LED will one time first and then five times on and off alternately. Release button.
+		</MetaDataItem>
+		<ChangeLog>
+			<Entry author="Nikish kiber" date="01 December 2022" revision="1">
+				Initial version, based on PD03Z file
+			</Entry>
+		</ChangeLog>
+	</MetaData>
+	<!-- Configuration Parameters -->
+	<CommandClass id="112">
+		<Value type="short" genre="config" instance="1" index="1" label="Motion Sensitivity" units="" value="3" min="0" max="99" size="1">
+			<Help>
+				This parameter is configured the sensitivity that motion detect. This value is larger, the sensitivity is lower, and the distance for motion detecting is closer.
+			</Help>
+		</Value>
+		<Value type="short" genre="config" instance="1" index="2" label="Motion Window Time" units="4s" value="2" min="0" max="3" size="1">
+			<Help>
+				This parameter is configured the specified time window (4..16s) in which the amount of pulses will trigger a motion event Window Time = [Value] * 4s + 4s.
+			</Help>
+		</Value>
+		<Value type="short" genre="config" instance="1" index="3" label="Pulse Count" units="" value="1" min="0" max="3" size="1">
+			<Help>
+				This parameter is configured amount of pulses during the specified time window which trigger a motion event. Amount of pluses = (Value) + 1.
+			</Help>
+		</Value>
+		<Value type="short" genre="config" instance="1" index="4" label="Motion Blind Time" min="0" max="15" value="15" size="1">
+			<Help>
+				This parameter is configured the no motion detected time after a motion event detects.
+				The device will wall for setting times to ready to next detect. Blink Time = ([Value) + 1) * 0.5s.
+			</Help>
+		</Value>
+		<Value type="list" genre="config" instance="1" index="5" label="Motion Enable" value="1" min="0" max="1" size="1">
+			<Help>
+				This parameter is configured the motion detected if enable or not. If'1; Motion detected function is enable. Otherwise is disabled.
+			</Help>
+			<Item label="Disable" value="0" />
+			<Item label="Enable" value="1" />
+		</Value>
+		<Value type="short" genre="config" instance="1" index="6" label="Motion Clear Time" units="second" value="30" min="10" max="3600" size="2">
+			<Help>
+				This parameter is configured the time to clear motion event after a motion event detected.
+				Time to motion clear, the device will send a clear event report to controller. Unit: Second.
+			</Help>
+		</Value>
+		<Value type="list" genre="config" instance="1" index="7" label="Led Indicate Enable" value="1" min="0" max="1" size="1">
+			<Help>
+				This parameter is configured the Led light on disable or enable.
+				'1' -- Enable Led Blink when device detects a motion event.
+				'0' - Disable led blink. This configuration is not affect inclusion, exclusion and reset.
+			</Help>
+			<Item label="Disable" value="0" />
+			<Item label="Enable" value="1" />
+		</Value>
+		<Value type="list" genre="config" instance="1" index="8" label="Binary Sensor Report Enable" value="0" min="0" max="1" size="1">
+			<Help>
+				'1' - Enable sensor binary report when device detects a motion event.
+				'0' - Disable sensor binary report when device detects a motion event.
+			</Help>
+			<Item label="Disable" value="0" />
+			<Item label="Enable" value="1" />
+		</Value>
+		<Value type="list" genre="config" instance="1" index="9" label="Basic Set Level" value="100" min="0" max="100" size="1">
+			<Help>
+				This parameter is configured the value that BASIC_SET for nodes that associated in Group 2.
+				'100' - BASIC_SET = OxFF (ON).
+				'0' - BASIC_SET = Ox00 (OFF).
+			</Help>
+			<Item label="OFF" value="0" />
+			<Item label="ON" value="100" />
+		</Value>
+		<Value type="short" genre="config" instance="1" index="10" label="Sensor Measuring Interval" units="" value="180" min="30" max="3600" size="2">
+			<Help>
+				This parameter Is configured the time interval for light sensor measure the ambient light intensity. This value Is larger. the battery life is longer. And the light intensity changed Is not obvious.
+			</Help>
+		</Value>
+		<Value type="short" genre="config" instance="1" index="11" label="Light Intensity Differential Report" value="50" min="1" max="127" size="1">
+			<Help>
+				This parameter is configured the value that differential between current measured and previous report value.
+				If the differential value larger than the settings, device will report this measured light intensity to controller.
+			</Help>
+		</Value>
+		<Value type="short" genre="config" instance="1" index="12" label="Light Intensity Threshold" value="50" min="1" max="127" size="1">
+			<Help>
+				This parameter is configured the light intensity for ligh Intensity current measured is less than the settings.
+				If the light intensity current measured is less than the settings, device will considered to be dark at current time.
+				If configuration 13 is set '1' and a r the device will send a BASIC_SET to the nodes that associated in group 2.
+			</Help>
+		</Value>
+		<Value type="list" genre="config" instance="1" index="13" label="Light Intensity Associated Enable" value="0" min="0" max="1" size="1">
+			<Help>
+				'1' – Enable current light intensity to associate the motion event, if there has a motion event
+				detected and the current light intensity is less than the settings in configuration 12, the device will
+				send a BASIC_SET to nodes associated in group2. And if the current light intensity is larger than the
+				settings in configuration 12, the device will not send BASIC_SET to nodes associated in group2.
+			</Help>
+			<Item label="Disable" value="0" />
+			<Item label="Enable" value="1" />
+		</Value>
+		<Value type="list" genre="config" instance="1" index="14" label="Motion Event Report Once Enable" value="0" min="0" max="1" size="1">
+			<Help>
+				'1' – The motion detected event will be sent to controller only once until device report motion cleared event.
+				'0' – The motion detected event will be sent to controller when device detects a movement event.
+			</Help>
+			<Item label="Disable" value="0" />
+			<Item label="Enable" value="1" />
+		</Value>
+		<Value type="short" genre="config" instance="1" index="15" label=" Temperature Differential Report" units="0.1 C" value="10" min="1" max="100" size="1">
+			<Help>
+				This parameter is configured the value that differential between current measured and previous report value. 
+                If the differential value larger than the settings, device will report this measured temperature value to nodes associated in lifeline.
+				Differential Value = [Value] * 0.1 (Fahrenheit if US Frequency, others are Celsius)
+			</Help>
+		</Value>
+		<Value type="short" genre="config" instance="1" index="99" label="Ambient Light Intensity Calibration" value="1000" min="1" max="65535" size="2">
+			<Help>
+				This parameter defines the calibrated scale for ambient light intensity.
+			</Help>
+		</Value>
+	</CommandClass>
+	<!-- Association Groups -->
+	<CommandClass id="133">
+		<Associations num_groups="4">
+			<Group index="1" max_associations="4" label="Lifeline" />
+			<Group index="2" max_associations="4" label="Control Commands BASIC_SET" />
+			<Group index="3" max_associations="4" label="Send Notification Report" />
+			<Group index="4" max_associations="4" label="Send Sensor Binary Report" />
+		</Associations>
+	</CommandClass>
+</Product>
