@@ -31,26 +31,29 @@
 			<Entry author="Nikish kiber" date="01 December 2022" revision="1">
 				Initial version, based on PD03Z file
 			</Entry>
+            <Entry author="Nikish kiber" date="01 December 2022" revision="1">
+				Changed types of values
+			</Entry>
 		</ChangeLog>
 	</MetaData>
 	<!-- Configuration Parameters -->
 	<CommandClass id="112">
-		<Value type="short" genre="config" instance="1" index="1" label="Motion Sensitivity" units="" value="3" min="0" max="99" size="1">
+		<Value type="byte" genre="config" instance="1" index="1" label="Motion Sensitivity" units="" value="3" min="0" max="99" size="1">
 			<Help>
 				This parameter is configured the sensitivity that motion detect. This value is larger, the sensitivity is lower, and the distance for motion detecting is closer.
 			</Help>
 		</Value>
-		<Value type="short" genre="config" instance="1" index="2" label="Motion Window Time" units="4s" value="2" min="0" max="3" size="1">
+		<Value type="byte" genre="config" instance="1" index="2" label="Motion Window Time" units="4s" value="2" min="0" max="3" size="1">
 			<Help>
 				This parameter is configured the specified time window (4..16s) in which the amount of pulses will trigger a motion event Window Time = [Value] * 4s + 4s.
 			</Help>
 		</Value>
-		<Value type="short" genre="config" instance="1" index="3" label="Pulse Count" units="" value="1" min="0" max="3" size="1">
+		<Value type="byte" genre="config" instance="1" index="3" label="Pulse Count" units="" value="1" min="0" max="3" size="1">
 			<Help>
 				This parameter is configured amount of pulses during the specified time window which trigger a motion event. Amount of pluses = (Value) + 1.
 			</Help>
 		</Value>
-		<Value type="short" genre="config" instance="1" index="4" label="Motion Blind Time" min="0" max="15" value="15" size="1">
+		<Value type="byte" genre="config" instance="1" index="4" label="Motion Blind Time" min="0" max="15" value="15" size="1">
 			<Help>
 				This parameter is configured the no motion detected time after a motion event detects.
 				The device will wall for setting times to ready to next detect. Blink Time = ([Value) + 1) * 0.5s.
@@ -100,13 +103,13 @@
 				This parameter Is configured the time interval for light sensor measure the ambient light intensity. This value Is larger. the battery life is longer. And the light intensity changed Is not obvious.
 			</Help>
 		</Value>
-		<Value type="short" genre="config" instance="1" index="11" label="Light Intensity Differential Report" value="50" min="1" max="127" size="1">
+		<Value type="byte" genre="config" instance="1" index="11" label="Light Intensity Differential Report" value="50" min="1" max="127" size="1">
 			<Help>
 				This parameter is configured the value that differential between current measured and previous report value.
 				If the differential value larger than the settings, device will report this measured light intensity to controller.
 			</Help>
 		</Value>
-		<Value type="short" genre="config" instance="1" index="12" label="Light Intensity Threshold" value="50" min="1" max="127" size="1">
+		<Value type="byte" genre="config" instance="1" index="12" label="Light Intensity Threshold" value="50" min="1" max="127" size="1">
 			<Help>
 				This parameter is configured the light intensity for ligh Intensity current measured is less than the settings.
 				If the light intensity current measured is less than the settings, device will considered to be dark at current time.
@@ -131,7 +134,7 @@
 			<Item label="Disable" value="0" />
 			<Item label="Enable" value="1" />
 		</Value>
-		<Value type="short" genre="config" instance="1" index="15" label=" Temperature Differential Report" units="0.1 C" value="10" min="1" max="100" size="1">
+		<Value type="byte" genre="config" instance="1" index="15" label=" Temperature Differential Report" units="0.1 C" value="10" min="1" max="100" size="1">
 			<Help>
 				This parameter is configured the value that differential between current measured and previous report value. 
                 If the differential value larger than the settings, device will report this measured temperature value to nodes associated in lifeline.
