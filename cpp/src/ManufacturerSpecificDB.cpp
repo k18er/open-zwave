@@ -341,10 +341,10 @@ namespace OpenZWave
 							Log::Write(LogLevel_Debug, "Config file for %s already queued", c->GetProductName().c_str());
 						}
 					}
-//					else 
-//					{
-//						checkConfigFileContents(driver, path);	
-//					}
+					else 
+					{
+						checkConfigFileContents(driver, path);	
+					}
 				}
 			}
 			checkInitialized();
@@ -377,6 +377,10 @@ namespace OpenZWave
 		{
 			string configPath;
 			Options::Get()->GetOptionAsString("ConfigPath", &configPath);
+
+            bool downImage = false;
+            Options::Get()->GetOptionAsBool("ImagesDownload", &downImage);
+
 			TiXmlDocument* pDoc = new TiXmlDocument();
 			if (!pDoc->LoadFile(file.c_str(), TIXML_ENCODING_UTF8))
 			{
@@ -392,7 +396,7 @@ namespace OpenZWave
 				TiXmlElement const* metaDataItem = metaDataElement->FirstChildElement("MetaDataItem");
 				while (metaDataItem) {
 					char const *str = metaDataItem->Attribute("name");
-					if (str && !strcmp(str, "ProductPic"))
+					if (downImage && str && !strcmp(str, "ProductPic"))
 					{
 						str = metaDataItem->GetText();
 						if (str) 
