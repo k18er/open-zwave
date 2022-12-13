@@ -1658,6 +1658,7 @@
     <Product config="shenzen_neo/nas-ws02z.xml" id="1085" name="Water Leakage Detector" type="0003"/>
     <Product config="shenzen_neo/nas-ws02z.xml" id="6085" name="Water Leakage Detector" type="0003"/>
     <Product config="shenzen_neo/nas-ws02z.xml" id="2085" name="Water Leakage Detector" type="0003"/>
+    <Product config="shenzen_neo/nas-ws03z.xml" id="0705" name="Water Leakage Detector" type="0010"/>
     <Product config="shenzen_neo/nas-ab01z.xml" id="0088" name="Siren Alarm" type="0003"/>
     <Product config="shenzen_neo/nas-ab01z.xml" id="1088" name="Siren Alarm" type="0003"/>
     <Product config="shenzen_neo/nas-ab01z.xml" id="6088" name="Siren Alarm" type="0003"/>

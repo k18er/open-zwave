@@ -1,0 +1,100 @@
+<Product Revision="2" xmlns="https://github.com/OpenZWave/open-zwave">
+	<MetaData>
+		<!--
+		Neo (Coolcam) NAS-WS03Z Water Sensor Version 3
+		No official manual available
+		Does not figure on https://products.z-wavealliance.org
+		-->
+		<MetaDataItem name="Name">
+			Neo (Coolcam) NAS-WS03Z Water Sensor Version 3 
+		</MetaDataItem>
+		<MetaDataItem name="ProductPic">
+			images/shenzen_neo/nas-ws02z.png
+		</MetaDataItem>
+		<MetaDataItem name="WakeupDescription">
+			User can press button once to wake-up this sensor to send wakeup notification to controller, the Led will be blink one time.
+		</MetaDataItem>
+		<MetaDataItem name="InclusionDescription">
+			Set gateway in inclusion mode. Press and hold the button for 5s until white led lights is on, then release the button before led turn off.
+		</MetaDataItem>
+		<MetaDataItem name="ExclusionDescription">
+			Set gateway in exclusion mode. Press and hold the button for 5s until white led lights is on, then release the button before led turn off.
+		</MetaDataItem>
+		<MetaDataItem name="ResetDescription">
+			Power up the device. Press and hold the button for 10s until pink led lights is on, then release the button before led turn off.
+		</MetaDataItem>
+		<ChangeLog>
+			<Entry author="Nikish kiber" date="13 December 2022" revision="1">
+				Initial version, based on WS02Z file
+			</Entry>
+		</ChangeLog>
+	</MetaData>
+	<!-- Configuration Parameters -->
+	<CommandClass id="112">
+		<Value genre="config" index="1" instance="1" label="Alarm Duration Time" max="120" min="0" size="1" type="byte" units="minute" value="120">
+			<Help>
+				This configuration can be used to adjust the time for beep and LED turned on when water leakage is detected. If this configuration is set to'0, the beep and LED will be turn on always until water leakage is not detected. Prefer to Figure 1. Unit: min (Minute). 
+			</Help>
+		</Value>
+		<Value genre="config" index="2" instance="1" label="Alarm Interval" max="120" min="5" size="1" type="byte" units="second" value="60">
+			<Help>
+				This configuration defines beep on /off interval time when water leakage is detected. Prefer to Figure 1. Unit: s (Second).
+			</Help>
+		</Value>
+		<Value genre="config" index="3" instance="1" label="First Alarm On Time Duration" max="120" min="10" size="1" type="byte" units="second" value="60">
+			<Help>
+				This configuration defines beep on duration first time when water leakage is detected. Prefer to Figure 1. Unit: s (Second).
+			</Help>
+		</Value>
+		<Value genre="config" index="4" instance="1" label="Alarm on Time Duration" max="120" min="5" size="1" type="byte" units="second" value="5">
+			<Help>
+				This configuration defines beep on duration after fist beep on when water leakage is detected.Prefer to Figure 1. Unit: s (Second). 
+			</Help>
+		</Value>
+		<Value genre="config" index="5" instance="1" label="Water Leakage Detected Disable" size="1" type="list" value="1">
+			<Help>
+				This configuration sets to'0' will disable the water leakage detected function. 
+			</Help>
+			<Item label="Disabled" value="0" />
+			<Item label="Enabled" value="1" />
+		</Value>
+        <Value genre="config" index="6" instance="1" label="Beep Alarm Disable" size="1" type="list" value="1">
+			<Help>
+				This configuration sets to'0'will disable the beep alarm on when device detects water leakage event. 
+			</Help>
+			<Item label="Disabled" value="0" />
+			<Item label="Enabled" value="1" />
+		</Value>
+        <Value genre="config" index="7" instance="1" label="Led Light Alarm Disable" size="1" type="list" value="1">
+			<Help>
+				This configuration sets to'0' will disable the Led indicating when device detects a water leakage event. 
+			</Help>
+			<Item label="Disabled" value="0" />
+			<Item label="Enabled" value="1" />
+		</Value>
+		<Value genre="config" index="8" instance="1" label="Basic Set Level" size="1" type="list" value="1">
+			<Help>
+				This configuration sets the level for device sending BASIC SET to nodes that associated in group 2 when device detects a water leakage event. 
+                [0] - Off, BASIC _SET = Ox00, all nodes associated in group 2 will be off. 
+                [1 ... 99] - On. BASIC_SET = [Setting Value]. 
+                [100] - On, BASIC_SET = OxFF. 
+			</Help>
+            <Item label="OFF" value="0" />
+			<Item label="ON" value="100" />
+		</Value>
+        <Value genre="config" index="9" instance="1" label="Sensor Binary Report Enable" size="1" type="list" value="1">
+			<Help>
+				This parameter sets to'l 'will enable SENSOR_BINARY REPORT when device detects a water leakage event. This is for Z-Wave protocol backward compatibility.
+			</Help>
+			<Item label="Disabled" value="0" />
+			<Item label="Enabled" value="1" />
+		</Value>
+	</CommandClass>
+	<!-- Association Groups -->
+	<CommandClass id="133">
+		<Associations num_groups="4">
+			<Group index="1" label="Lifeline" max_associations="4" />
+			<Group index="2" label="Control Commands" max_associations="4" />
+		</Associations>
+	</CommandClass>
+</Product>

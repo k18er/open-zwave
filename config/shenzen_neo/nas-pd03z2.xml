@@ -31,7 +31,7 @@
 			<Entry author="Nikish kiber" date="01 December 2022" revision="1">
 				Initial version, based on PD03Z file
 			</Entry>
-            <Entry author="Nikish kiber" date="01 December 2022" revision="1">
+            <Entry author="Nikish kiber" date="13 December 2022" revision="1">
 				Changed types of values
 			</Entry>
 		</ChangeLog>
@@ -152,8 +152,6 @@
 		<Associations num_groups="4">
 			<Group index="1" max_associations="4" label="Lifeline" />
 			<Group index="2" max_associations="4" label="Control Commands BASIC_SET" />
-			<Group index="3" max_associations="4" label="Send Notification Report" />
-			<Group index="4" max_associations="4" label="Send Sensor Binary Report" />
 		</Associations>
 	</CommandClass>
 </Product>
