@@ -227,7 +227,7 @@ namespace OpenZWave
 				cc.Register(SensorBinary::StaticGetCommandClassId(), SensorBinary::StaticGetCommandClassName(), SensorBinary::Create);
 				cc.Register(SensorMultilevel::StaticGetCommandClassId(), SensorMultilevel::StaticGetCommandClassName(), SensorMultilevel::Create);
 				cc.Register(SoundSwitch::StaticGetCommandClassId(), SoundSwitch::StaticGetCommandClassName(), SoundSwitch::Create);
-				cc.Register(Supervision::StaticGetCommandClassId(), Supervision::StaticGetCommandClassName(), Supervision::Create);
+				//cc.Register(Supervision::StaticGetCommandClassId(), Supervision::StaticGetCommandClassName(), Supervision::Create);
 				cc.Register(SwitchAll::StaticGetCommandClassId(), SwitchAll::StaticGetCommandClassName(), SwitchAll::Create);
 				cc.Register(SwitchBinary::StaticGetCommandClassId(), SwitchBinary::StaticGetCommandClassName(), SwitchBinary::Create);
 				cc.Register(SwitchMultilevel::StaticGetCommandClassId(), SwitchMultilevel::StaticGetCommandClassName(), SwitchMultilevel::Create);
